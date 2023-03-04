@@ -33,6 +33,11 @@ function authoriseUser(params, code) {
   }).then(res => res.json())
     .then(async data => {
       // create new user
+      console.log(data)
+      console.log('sex', data.sex)
+      console.log('region', data.city)
+      console.log('region', data.country)
+      console.log('region', data.created_at)
       const user = new User({
         'stravaId' : data.athlete.id,
         'discordId' : params.userId,
