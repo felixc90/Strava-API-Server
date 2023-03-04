@@ -36,6 +36,9 @@ function authoriseUser(params, code) {
       const user = new User({
         'stravaId' : data.athlete.id,
         'discordId' : params.userId,
+        'joinedAt' : data.created_at,
+        'region' : data.city + ', ' + data.country,
+        'sex' : data.sex,
         'refreshToken' : data.refresh_token,
         'name' : `${data.athlete.firstname} ${data.athlete.lastname}`,
         'username' : params.username,
@@ -52,7 +55,7 @@ function authoriseUser(params, code) {
       if (!guild.members.map(member => member.id).includes(params.userId)) {
         guild.members.push({
           'id' : user.discordId,
-          'joinedAt' : new Date(),
+          'joinedGuildAt' : new Date(),
           'totalExp' : 0,
           'modifiers' : [],
           'mostRecentRunId' : -1,

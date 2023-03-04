@@ -7,7 +7,6 @@ var schema = mongoose.Schema({
     'id' : String,
     'joinedAt' : Date,
     'totalExp' : Number,
-    'mostRecentRunId' : String,
     'logEntries' : [{
         'logType' : String,
         'value' : Number,
