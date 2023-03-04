@@ -33,12 +33,9 @@ function authoriseUser(params, code) {
   }).then(res => res.json())
     .then(async data => {
       // create new user
-      console.log(data)
-      console.log('sex', data.sex)
-      console.log('region', data.city)
-      console.log('region', data.country)
-      console.log('region', data.created_at)
       const region = [data.athlete.city, data.athlete.state, data.athlete.country].filter(text => text).join(', ');
+      let lastUpdated = new Date();
+      lastUpdated.setFullYear(date.getFullYear() - 1);
       const user = new User({
         'stravaId' : data.athlete.id,
         'discordId' : params.userId,
@@ -54,7 +51,7 @@ function authoriseUser(params, code) {
         'totalDistance' : 0,
         'totalTime' : 0,
         'runs' : [],
-        'lastUpdated' : getStartOfPeriod(new Date(), 'week')
+        'lastUpdated' : getStartOfPeriod(lastUpdated, 'year')
       })
       // find guild with given guild id
       let guild = await Guild.findOne({guildId : params.guildId})
