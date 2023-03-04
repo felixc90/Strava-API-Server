@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 const Guild  = require('./models/Guild');
 const User  = require('./models/User');
+const { updateUser } = require('./utils/update')
 
 dotenv.config()
 
@@ -68,6 +69,7 @@ function authoriseUser(params, code) {
         await guild.save()
       }
       await user.save()
+      await updateUser(user);
       console.log(`${params.username} added to Achilles!`)
     }
   )
