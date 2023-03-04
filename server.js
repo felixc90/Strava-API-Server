@@ -8,7 +8,6 @@ dotenv.config()
 var app = express();
 
 var url = process.env.MONGODB_CONNECT
-
 mongoose
     .connect(url, {useNewUrlParser : true, useUnifiedTopology : true})
     .then(() => {

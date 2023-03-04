@@ -38,12 +38,14 @@ function authoriseUser(params, code) {
       console.log('region', data.city)
       console.log('region', data.country)
       console.log('region', data.created_at)
+      const region = [data.athlete.city, data.athlete.state, data.athlete.country].filter(text => text).join(', ');
       const user = new User({
         'stravaId' : data.athlete.id,
         'discordId' : params.userId,
-        'joinedAt' : data.created_at,
-        'region' : data.city + ', ' + data.country,
-        'sex' : data.sex,
+        'joinedAt' : new Date(),
+        'createdAt' : data.athlete.created_at,
+        'region' : region,
+        'sex' : data.athlete.sex,
         'refreshToken' : data.refresh_token,
         'name' : `${data.athlete.firstname} ${data.athlete.lastname}`,
         'username' : params.username,
