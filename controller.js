@@ -35,7 +35,7 @@ function authoriseUser(params, code) {
       // create new user
       const region = [data.athlete.city, data.athlete.state, data.athlete.country].filter(text => text).join(', ');
       let lastUpdated = new Date();
-      lastUpdated.setFullYear(date.getFullYear() - 1);
+      lastUpdated.setFullYear(lastUpdated.getFullYear() - 1);
       const user = new User({
         'stravaId' : data.athlete.id,
         'discordId' : params.userId,
