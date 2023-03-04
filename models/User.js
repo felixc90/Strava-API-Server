@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const Run  = require('./Run').schema;
 
 var schema = mongoose.Schema({
   'stravaId' : String,
